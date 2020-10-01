@@ -37,7 +37,9 @@ public class HelloResource {
     @Produces("text/plain")
     public String dep() {
         System.out.println("Counter: " + counter);
-        return "Id from me: " + (counter++) + ". Id from dependant CDI: " + dependentScopedCdiService.getId();
+        return "Id from me: " + (counter++) + ". Id from : " +
+                dependentScopedCdiService.getClass().getName() +
+                ":" + dependentScopedCdiService.getId();
     }
 
     @GET
@@ -51,7 +53,7 @@ public class HelloResource {
     @Path("stateless")
     @Produces("text/plain")
     public String stateless() {
-        return "Id from stateless EE: " + statelessEEService.getId();
+        return "Id from stateless EE: ("+ statelessEEService.getClass().getName() + ") :" + statelessEEService.getId();
     }
 
     @GET
